@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>[Esc] Hacker Escape Rooms - Startpage</title>
+    <meta name="description" content="Play online or on-site escape rooms with a hacker theme- Book a challenge for you and your friends or your team at work.">
+    <link rel="icon" href="logo.svg" type="image/svg+xml">                          <!--lilla loggan i webläsarfliken. -->
+    <link rel='stylesheet' href='main.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!---HEADER--->
+    <header class="site-header">         
+        <div class="brand">
+            <img class="logo" src="logo.svg" alt="Hacker Escape Rooms logotype">    <!--lägg till mer om LOGAN  -->
+            <h1>Hacker Escape Rooms</h1>
+        </div>
+
+        <nav class="main-nav">                      <!-- Huvud menyn -->
+            <ul>
+                <li><a href="#online">Play online</a></li>
+                <li><a href="#onsite">Play on-site</a></li>
+                <li><a href="#story">The story</a></li>
+                <li><a href="#contact">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+   <main>
+    <!---MAIN PICTURE--->
+        <section class="main-pic">
+            <picture>
+                <source media="(max-width: 700px)" srcset="images/hackerman-mobil.png">
+                <img class="main-pic-image" src="images/hackerman.png" alt="Hooded hacker sitting in front of multiple screens">
+            </picture>
+            <div class="main-pic-buttons">
+                <a href="#online" class="btn btn-primary">Online Challenges</a>             <!--MELLAN SLAGET MELLAN BTN och BTN-primary/secondary  är två olika klasser i ett element = kan ha en "knapp som fixar formen" och en som bara säger den här färgen ska den här knappen vara. Blir snyggare och mindre shit i css-->
+                <a href="#onsite" class="btn btn-secondary">On-site Challenges</a>
+            </div>
+        </section>
+
+    <!---REVIEWS/JOHN DOE--->
+        <section class="reviews">
+
+            <article class="review">
+                    <img class="review-avatar" src="images/johnDoe.png" alt="John Doe">
+                <div>
+                    <p class="review-quote">This is a quote about how amazing this place is and how much fun me and my friends had when we tried it</p>
+                    <p class="review-author">John Doe, visited us in September 2021</p>
+                </div>
+            </article>
+
+            <article class="review">
+                <img class="review-avatar" src="images/johnDoe.png" alt="John Doe">
+                <div>
+                    <p class="review-quote">This is a quote about how amazing this place is and how much fun me and my friends had when we tried it</p>
+                    <p class="review-author">John Doe, visited us in September 2021</p>
+                </div>
+            </article>
+        </section>
+
+    <!---POPULAR KNAPPARNA--->
+        <section class="popular">
+            <h2>Popular challenges right now</h2>
+
+            <!--KORT 1-->
+            <div class="room-cards">
+                <article class="room-card">
+                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
+                    <div class="room-info">
+                        <h3 class="room-title">Title of room (on-site)</h3>
+                        <div class="room-meta">
+
+                            <span class="stars" aria-label="Rating: 4 out of 5">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/empty-star.svg" alt="">
+                            </span>
+
+                            <span>2-6 participants</span>
+
+                        </div>
+                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
+                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
+                    </div>
+                </article>
+
+                <!--KORT 2-->
+                <article class="room-card">
+                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
+                    <div class="room-info">
+                        <h3 class="room-title">Title of room (on-site)</h3>
+                        <div class="room-meta">
+                            <span class="stars" aria-label="Rating: 4 out of 5">        <!--aria-label är till för att skärmläsaren ska säga Rating: 4 out of 5 -->
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/empty-star.svg" alt="">
+                            </span>       
+                            <span>2-6 participants</span>
+
+                        </div>
+                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
+                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
+                    </div>
+                </article>
+
+                <!--KORT 3-->
+                <article class="room-card">
+                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
+                    <div class="room-info">
+                        <h3 class="room-title">Title of room (on-site)</h3>
+                        <div class="room-meta">
+                            <span class="stars" aria-label="Rating: 4 out of 5">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/empty-star.svg" alt="">
+                            </span>
+                            <span>2-6 participants</span>
+
+                        </div>
+                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
+                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
+                    </div>
+                </article>
+
+            </div>
+
+    
+            <div class="popular-buttons">
+                <a href="#online" class="btn btn-primary">Online Challenges</a>             <!--MELLAN SLAGET MELLAN BTN och BTN-primary/secondary  är två olika klasser i ett element = kan ha en "knapp som fixar formen" och en som bara säger den här färgen ska den här knappen vara. Blir snyggare och mindre shit i css-->
+                <a href="#onsite" class="btn btn-secondary">On-site Challenges</a>
+            </div>
+        </section>
+
+    <!---STORY--->
+        <section class="story" id="story">
+            <p class="story-text">Quodsi haberent  magnalia inter potentiam et divitias, et non illam quidem haec eo spectant haec quoque vos omnino desit illud quo solo felicitatis liberatatisque perficiuntur.</p>
+            <a href="#" class="btn btn-outline">Read the full story</a>            
+        </section>
+
+    <!---PRESENTATION--->
+        <section class="presentation">  
+            <picture>
+                <source media="(max-width:700px)" srcset="images/learn-hacking-mobil.png">
+                <img class="presentation-image" src="images/learn-hacking.png" alt="Two colleagues looking at a computer and laptop together">
+            </picture>
+            
+            <div class="presentation-text">
+                <h2>Play with your friends or build your team stronger at work</h2>
+                <p>Praetera, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam. Nemo nocree tibi erit, et non inimicos, et</p>
+                <a href="#onsite" class="btn btn-primary">Book on-site today</a>
+            </div>
+        </section>
+
+        <section class="presentation presentation-flipped">
+            <picture>
+                <source media="(max-width:700px)" srcset="images/woman-looking-at-pc-mobil.png">
+                <img class="presentation-image" src="images/woman-looking-at-pc.png" alt="Woman focusing on code on a computer monitor">
+            </picture>
+            
+            <div class="presentation-text">
+                <h2>Play online or visit our venue for one of our 25 escape rooms</h2>
+                <p>Praetera, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam. Nemo nocree tibi erit, et non inimicos, et</p>
+                <a href="#online" class="btn btn-primary">See all challenges</a>
+            </div>
+        </section>
+
+   </main>
+
+   <footer class="site-footer">
+    <!---SITE-FOOTER--->
+    <div class="footer-content">
+        <div class="footer-about">
+            <h3>[Esc] Hacker Escape Rooms</h3>
+            <p>Quodsi haberent magnalia inter potentiam et divitias, et non illam quidem haec eo spectant haec quoque vos omnino desit illud quo solo felicitatis libertatisque perficiuntur.</p>
+        </div>
+
+        <nav class="footer-column" aria-label="Site map">
+            <h3>Site map</h3>
+            <ul>
+                <li><a href="#story">The Story</a></li>
+                <li><a href="#contact">Contact us</a></li>
+                <li><a href="#">Legal</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="#online">Play online</a></li>
+                <li><a href="#onsite">Play on-site</a></li>
+            </ul>
+        </nav>
+        
+        <nav class="footer-column" aria-label="Social media">
+            <h3>Follow us on</h3>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Twitter</a></li>
+            </ul>
+        </nav>
+    </div>
+   </footer>
+
+
+
+</body>
+</html>
