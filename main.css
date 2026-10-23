@@ -1,0 +1,538 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body{
+    font-family: "Roboto", Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;                /*fottern blir längst ner, även på korta sidor*/
+    padding-bottom:5rem ;   /*vitt mellanrum ovan för footern*/
+}
+
+/*>------HEADER------<*/
+.site-header{
+    background: #011827;
+    color: #FFFFFF;
+    padding: 1rem 1.5rem 0;
+} 
+
+.brand{
+    display: flex;          
+    align-items: center;    /*så text är "mitten bredvid loggan"*/
+    gap: 1.3rem;            /*mellanrummet mellan loggan + text*/
+}
+
+.logo{
+    width: clamp(60px, 12vw, 150px);
+    height: auto;
+}
+
+/*>----MAIN NAV----<*/
+.main-nav ul {
+    list-style: none;           /*bort med punkterna*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 3rem;
+    padding: 1.5rem 0 1rem;     /*INTE ett fel utan DET SKA VARA SÅ 0 1rem*/
+}
+
+.main-nav a{
+    color: white;
+    text-decoration: none;      /*tar bort den där fulla "underlinjen"*/
+    font-weight: bold;          /*tjock text*/
+    font-size: 1.1rem;
+}
+
+.main-nav a:hover {color: #8ACFE5;}     /*Horar du över länkarna så blir dom ljusblå*/
+
+/*>----MAIN PIC----<*/
+.main-pic{
+    position: relative;         /*gör så knappar kan sättas med/på/över bi*/
+    margin-bottom: 3rem;        /*basically gör plats för knapparna som kommer hänga ut under bildne*/
+
+}
+
+.main-pic-image{
+    display: block;
+    width: 100%;
+    height: auto;               /*höjden följer bildens propiortioner - FIXAR problemet med att inte ser topen utav huvudet + datorn åt vänster*/
+    
+    object-fit: cover;
+    object-position: center 40%;
+
+}
+
+.main-pic-buttons{
+    display: flex;
+    justify-content: center;    /*SKITEN BLIR I MITTEN*/
+    gap: 1rem;                /*mellan rummet mellan knapparna hälften utav de jag satt ovan i margin-bottom*/
+    position: absolute;
+    inset: auto 0 0 0;          /*förkortat top/right/bottom/left så jag inte skriver de för olika. MER CLEEAAN*/
+    transform: translateY(50%); /*flyttar ner knapparna hälften av sin höjd*/
+
+}
+
+/*>----KNAPPARNA----<*/
+.btn{
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+    padding: 1.1rem 2.5rem;     /*kanske öka 2.2remen om gapet blir för tajt */
+    border-radius: 4px;
+    min-width: 15rem;           /*KANSKE TA BORT = LIKA LÅNGA KNAPPAR   */
+   
+
+}
+
+.btn-primary{
+    background: #E3170A; 
+    color: white;
+}
+
+.btn-secondary{
+    background: #8ACFE5;
+    color: #011827;
+}
+
+.btn:hover{
+    filter: brightness(1.1);       /*knapparna lyser upp EJ I UPPGIFTEN MEN GÖR DET FÖR DET ÄR EN KNAPP!*/
+}
+
+
+/*>----REVIEWS or JOHN DOE SQUARES----<*/
+.reviews{
+    display: flex;
+    justify-content: center;
+    max-width: 1100px;          /*550px x 2 = 1100px per ruta*/
+    padding: 0 1.5rem;
+    margin: 4rem auto;          /*auto på siudorna = centrerar blocket*/
+    gap: 3rem;
+
+}
+
+.review{
+    display: flex;              /*bilden blir bredvid texten*/
+    align-items: flex-start;
+    flex: 1;                    /*båda quotesen delar ppå breedn lika*/
+    gap: 1rem;                  
+}
+
+.review-avatar{
+    width: 100px;               /*bredden på JOHN DOE bilden*/
+    height: 100px;              /*HÖJDEN på JOHN DOE bilden*/
+    border-radius: 50%;         /*BILDEN blir RUND - gör inget här... för bilden vi har redan är rund... MEN är mer till som ett OM VI BYTER ut dom här bilderna emot nån FYRKANTIG bild så blir den rund direkt.*/
+    object-fit: cover;          /* Bilden fyller ut rutan, propotioenrna behålls + kanternan skärs - behövs egentligen - inte heller MEN byter vi john DOE till en annan bild så sparar de här mig en huvudverk*/
+    flex:none;                  /*bilden krymps aldirfg när text är för lång*/
+
+
+}
+
+.review-quote{
+    font-style: italic;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    line-height:1.2;        /*avstånnd mellan textraderna */
+}
+
+.review-author{
+    font-size: 1rem;
+
+}
+
+/*>----POPULAR CHALLANGES RIGHT NOW----<*/
+.popular h2{
+    text-align: center;
+    font-weight: 400;       /*ändrar tjockleken - h2 är TJOCKIS - now his a slimboi*/
+    font-size:2rem;
+    margin-bottom: 4rem;
+
+}
+
+/*>----ROOM CARDS----<*/
+
+.room-cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto 4rem;
+    padding: 0 1.5rem;
+}
+
+.room-card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;        /*bilden klips så den får runda hörn*/
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.room-image{
+    width: 100%;
+    height: auto ;          /*höjden på bilden i korten - följer bildens propotion i höjd :)*/
+    aspect-ratio: 8/5;
+    max-height: 220px;      /*säkerhets spärr just in case korten blir bredare...*/
+    object-fit: cover;
+}
+
+.room-info{
+    display: flex;
+    flex-direction: column;
+    flex: 1;                /*fyller resten utav kortets utrymmet under bilden*/     
+    padding: 0.70rem 1rem 1rem;
+}
+
+.room-title{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.room-meta{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*space mellan stjärnorna (vänster) och antal (höger)*/
+    font-size: 0.80rem;
+    margin: 0.25rem 0 1rem;         
+
+}
+
+.stars{
+    display: flex;
+     gap: 8px;       /*mellan rum*/
+
+}
+
+.stars img{
+    width: 15px;    /*båda kanske ska ligga på 14-15px*/
+    height: 15px;
+}
+
+.room-text{
+    margin-bottom: 1rem;        /*puttar ner book this room knappen lite*/
+}
+
+.room-info .btn{
+    margin-top: auto;           /*trycker ner knappen längst ner i kortet*/
+    align-self: flex-end;       /*åt höger*/
+
+}
+
+.btn-small{
+    min-width: 0;               /*tar bort min-width ifrån .btn - så knappen blir kort/liten*/
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+}
+
+/*>----KNAPPARNA UNDER KORTET----<*/
+.popular-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;                /*hamnar under varabnra när de blir för smalt*/
+    margin-bottom: 4rem;            /*uttrymme under knappen*/
+}
+
+
+/*---->MÖRKBLÅA STORY RUTAN----<*/
+.story{
+    background: #011827;
+    color: white;
+    text-align: center;             /*texten + knapp blir centrerad*/
+    padding: 5rem 1.5rem;
+}
+
+.story-text{
+    font-size: 1.5rem;
+    line-height: 1.3;
+    max-width: 640px;               /*begränsar radlängden så texten blir på 4 rader :) */
+    margin: 0 auto 2.5rem;          /*auto = centrerar blocket, 2.5rem = lite luft till knappen*/
+}
+
+.btn-outline{
+    background: transparent;
+    color: #8ACFE5 ;
+    border: 2px solid #8ACFE5;
+}
+
+.btn-outline:hover{                 /*horar du på read the full story knappen lyser den lite*/
+    background: rgba(138, 206, 229, 0.23);
+}
+
+
+/*>----PRESENTATION (BILD + TEXT-BLOCK)----<*/
+
+.presentation{
+    display: grid;
+    grid-template-columns: 1fr 1fr;     /*2 lika breda KOLLUMMER*/
+}
+
+.presentation picture{
+    display: block;                     /*picture är gridbarn och fyller sin halva :) */
+}
+
+.presentation-image{
+    display: block;
+    width: 100%;
+    height: 100%;                        /*blir så den fyller hela sin halva, blir exakt på glipa på knappen ovan  */
+    object-fit: cover;
+}
+
+.presentation-flipped picture{
+    order: 2;                             /*sista bilden blir åt höger :) */
+}
+
+.presentation-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;               /*texten blir på mitten på högden*/
+    align-items: flex-start;               /*KANPPEN HÅLLER SIUN STORLEK, STRÄCKS INTE UT NÅ MER*/
+    justify-self: center;                  /*ctrerar textrutan på sin halva*/
+    width: 100%;
+    max-width: 560px;
+    padding: 3rem 1.5rem;
+}
+
+.presentation-text h2{
+    font-size:1.8rem ;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.presentation-text p{
+    font-size:1.2rem ;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+/*>----FOOTER----<*/
+
+.site-footer{
+    background: #011827;
+    color: white;
+    padding: 5rem 1.5rem;
+}
+
+.footer-content{
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-about{
+    max-width: 480px;
+}
+
+.site-footer h3{
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;                  /*lite space neråt så det är uttrymme mellan TITTLEN och vanliga texten*/
+}
+
+
+
+.site-footer p , .site-footer a{ 
+    line-height: 1.4;
+}
+
+.site-footer ul{ 
+    list-style: none;
+}
+
+.site-footer ul + ul{                       /*splitar listan... så vi skiljer på 1 2 3 4 5 under SITE MAP så det blir 1 2 3  "mellanslag/split" 4 5*/
+    margin-top: 1rem;
+}
+
+.site-footer a{
+    color: white;
+    text-decoration: none;
+}
+
+.site-footer a:hover{                       /*Står inget om nå hora över dom... men bra att få nån form utav reaktion */
+    color: #8ACFE5;
+}
+
+
+
+
+
+
+/*>----MOBIL (700px och smallare)----<*/
+@media(max-width:700px){
+   
+    main{
+        padding-bottom: 3rem;
+    }
+
+    /*HEADER: bara LOGGA och TITEL*/
+    .site-header{
+        padding: 1rem 1.5rem;
+        
+    }
+
+    .logo{
+        width: 100px;
+    }
+
+    .brand h1{
+        font-size: 1.1rem;
+        max-width: 7rem;            /*3 textrader*/
+    }
+    .main-nav{
+        display: none;              /*gömmer menyn*/
+    }
+
+    /*MAIN PIC : knapparna under bilden*/
+    .main-pic{
+        margin-bottom: 9.5rem;
+    }
+
+    .main-pic-image{
+        height: 56vw;
+    }
+
+    /*KNAPAPRNA*/
+    .btn{
+        min-width: min(15rem, 100%);        /*knapparna ska fan inte göra sidan bredare på smala skärmar*/
+    }
+
+    .btn-small{
+        min-width: 0;                       /* GÖR SÅ rums kortens knapp är som desktops*/
+    }
+
+
+
+   
+    .main-pic-buttons{
+        inset:100% 0 auto 0;        /*börjar där bilden slutar*/
+        transform: none;
+        padding-top: 1.5rem;
+    }
+
+    /*båda knappgrupperna - onsite överst sen online som en länk under*/
+    .main-pic-buttons, .popular-buttons{
+        flex-direction: column-reverse;         /*vänder ordningen :) */
+        align-items: center;
+        gap: 1.25rem;
+    }
+
+    .main-pic-buttons .btn-primary, .popular-buttons .btn-primary{
+        background: none;
+        color: #36769D;
+        text-decoration: underline;
+        font-size: 0.9rem;
+        min-width:0 ;
+        padding: 0;  /*tar bort padingen totalt för knapen... lär fixas*/
+    }
+
+    /*review: bara en */
+    .review + .review{display: none;}
+
+    .reviews{margin: 2rem auto 3rem;}
+
+    .review-avatar{
+        width: 60px; 
+        height: 60px;
+    }
+
+    .review-quote{ 
+        font-size: 1.05rem; 
+        margin-bottom: 0.5rem;
+    }
+
+    .review-author{font-size: 0.85rem;}
+
+    /*rumskort: dra/scroll i sidled*/
+    .popular h2{
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .room-cards{    
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        
+        scroll-padding: 0 1.5rem;
+        gap: 1.5rem;
+        padding: 0.5rem 1.5rem 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .room-card{
+        flex: 0 0 min(78%, 320px);          /*växa 0 krypa 0  breed min (78%, 320px) = väljer de minsta av dom två*/
+        scroll-snap-align: start;          /*vilket kort den ska "hoppa" till. Skrollar man och släpper mit emellan två kort -> hoppar den till närmsta kortet på vänstersidan, som att den lägger fokus på den typ*/
+    }
+
+    /*POPULAR BUTTON*/
+    .popular-buttons{margin-bottom: 3rem;}
+
+
+    /*MÖRKGRÅA - STORY - rutan*/
+    .story{
+        padding: 3rem 1.5rem;               /*mindre "luft" uppe/nere än de som används på desktop*/
+    }
+
+    .story-text{
+        font-size: 1.25rem;                 /*TA BORT ifall 1.5rem ifrån desktop ser bättre ut*/
+        margin-bottom: 2rem;
+    }
+
+    /*PRESENTATION*/
+    .presentation{
+        grid-template-columns:minmax(0, 1fr);         /*en kolum istället för två */
+    }
+
+    .presentation-flipped picture, .presentation-flipped .presentation-text{
+        order: 0;                           /*återställer ordningen - SÅ bilderna ALLTID HAMNAR FÖRST */
+    }
+
+    .presentation-image{
+        height: 60vw;                       /*typ samma - höjd på bilderna i figma*/
+        min-height: 0;
+    }
+
+    .presentation-text{
+        padding: 2rem 1.5rem 3rem;
+        max-width: none;
+    }
+
+    .presentation-text h2{
+        font-size: 1.5rem;
+    }
+
+    .presentation-text p{
+        font-size: 1.05rem;
+    }
+
+    .presentation-text .btn{
+        align-self: flex-start;
+    }
+
+    /*FOOTER*/
+    .site-footer{
+        padding: 2.5rem 1.5rem;        
+    }
+    .footer-content{
+        grid-template-columns: 1fr;     /*så texten och länkarna längst ner BLIR UNDER VARANDRA - 1 KOLUM*/ 
+        gap: 1.5rem;
+    }
+
+    .site-footer h3{
+        font-size: 1rem;                /*fixar storlkene på titlarna i footer*/
+    }
+
+
+
+
+
+
+}
+
+
