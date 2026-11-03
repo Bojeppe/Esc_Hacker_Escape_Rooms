@@ -49,6 +49,16 @@ main{
 
 .main-nav a:hover {color: #8ACFE5;}     /*Horar du över länkarna så blir dom ljusblå*/
 
+/*>----HAMBURGAR KNAPP----<*/
+
+.menu-close{
+    display: none;                      /*gömmer hamburgar menyn på desktop*/
+}
+
+
+
+
+
 /*>----MAIN PIC----<*/
 .main-pic{
     position: relative;         /*gör så knappar kan sättas med/på/över bi*/
@@ -370,12 +380,16 @@ main{
         padding-bottom: 3rem;
     }
 
-    /*HEADER: bara LOGGA och TITEL*/
+    /*HEADER: bara LOGGA och TITEL - Hamber menyn också*/
     .site-header{
         padding: 1rem 1.5rem;
+        display: flex;                  /*loggan och knop blir på sanna rad*/
+        justify-content: space-between; /*loggan till vänster och knap till höger*/
+        align-items: flex-start;        /*KNAPPEN ligger uppe i hörnet som i figma.*/
         
     }
 
+   
     .logo{
         width: 100px;
     }
@@ -384,9 +398,48 @@ main{
         font-size: 1.1rem;
         max-width: 7rem;            /*3 textrader*/
     }
+
+    /*MENYN PÅ MOBILEN */
     .main-nav{
-        display: none;              /*gömmer menyn*/
+        display: flex;   
+        flex-direction: column;
+        justify-content: center;       /*LÄNKARNA i mitten på höjden*/
+        align-items: center;           /* LÄNKARNA i mitten på bredden*/
+        
+        position: fixed;                /*i webläsarfönstret*/
+        inset: 0;                       /*hela skärmen*/
+        z-index: 1000;                  /*OVANPÅ ALLT annat*/
+
+        background: #011827;         /*färgen som i figma - blir menyn*/
+
+        visibility: hidden;             /*gömd som standar - så den inte syns hela tin*/
+        opacity: 0;
+
     }
+
+    .main-nav.is-open{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .main-nav ul{                       /*SKRIVER ÖVER desktopens radlayout*/
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 0;
+    }
+
+    .main-nav a{
+        font-size: 1.9rem;
+    }
+
+
+
+
+
+
+
 
     /*MAIN PIC : knapparna under bilden*/
     .main-pic{
