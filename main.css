@@ -5,6 +5,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
 }
 
 main{
@@ -55,8 +56,9 @@ main{
     display: none;                      /*gömmer hamburgar menyn på desktop*/
 }
 
-
-
+.menu-toggle{
+    display: none;
+}
 
 
 /*>----MAIN PIC----<*/
@@ -434,11 +436,42 @@ main{
         font-size: 1.9rem;
     }
 
+    /*X och Hamburgar menyn*/
+    .menu-close{
+        display: block;
+        background: none;
+        border: none;   
+
+        position: absolute;
+        padding: 0;
+        width: 40px;
+        top: 1rem;
+        right: 1.5rem;
+
+    }
+
+    .menu-close img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 
 
+    .menu-toggle{
+        display: block;
+        background: none;
+        border: none; 
 
+        width: 42px;
+        padding: 6px 0;
 
+    }
 
+    .menu-toggle img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 
 
     /*MAIN PIC : knapparna under bilden*/
