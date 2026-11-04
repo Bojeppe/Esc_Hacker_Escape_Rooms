@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>[Esc] Hacker Escape Rooms - Startpage</title>
-    <meta name="description" content="Play online or on-site escape rooms with a hacker theme- Book a challenge for you and your friends or your team at work.">
+    <meta name="description" content="Play online or on-site escape rooms with a hacker theme. Book a challenge for you and your friends or your team at work.">
     <link rel="icon" href="logo.svg" type="image/svg+xml">                          <!--lilla loggan i webläsarfliken. -->
     <link rel='stylesheet' href='main.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +20,9 @@
             <h1>Hacker Escape Rooms</h1>
         </div>
 
-        <nav class="main-nav is-open" aria-label="Main menu">                      <!-- Huvud menyn -->
+        <nav class="main-nav" id="main-nav" aria-label="Main menu">                      <!-- Huvud menyn + X  knapp -->
             <button class="menu-close" aria-label="Close menu">
-                <img src="images/hamburger-menu.svg" alt="">
+                <img src="images/close.svg" alt="">
             </button>
             
             <ul>
@@ -32,7 +32,10 @@
                 <li><a href="#contact">Contact us</a></li>
             </ul>
         </nav>
-
+        
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">                         <!-- HAMBURGER MENYN-->
+            <img src="images/hamburger-menu.svg" alt="">
+        </button>
         
     </header>
     
@@ -217,6 +220,6 @@
    </footer>
 
 
-
+<script src="script.js"></script>
 </body>
 </html>
