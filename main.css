@@ -13,6 +13,10 @@ main{
     padding-bottom:5rem ;   /*vitt mellanrum ovan för footern*/
 }
 
+.scroll-fix{
+    overflow: hidden;       /*sidan under menyn kommer inte kunna scrollas nu*/
+}
+
 /*>------HEADER------<*/
 .site-header{
     background: #011827;
@@ -412,17 +416,39 @@ main{
         inset: 0;                       /*hela skärmen*/
         z-index: 1000;                  /*OVANPÅ ALLT annat*/
 
-        background: #011827;         /*färgen som i figma - blir menyn*/
+        background: rgba(230, 234, 335, 0) ;         /*ljusgrå genomsnylig som i figma - blir menyn*/
 
         visibility: hidden;             /*gömd som standar - så den inte syns hela tin*/
+        
+
+    }
+
+    .main-nav::before{                  /*MÖRKA MENYN/Lådan med Margin*/
+        content: "";
+        position: absolute;
+        inset: 1.1rem;                                    /*margin runt lådan*/
+        background: #011827;
+
+        box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);        /*skugga på meny lådan OM DET ENS FINNS EN -_- */
+        z-index: -1;                    /*blir över "gråa bakgrunden" men bakom länkarna */
+    }
+
+    .main-nav::before, .main-nav ul, .menu-close{           /*panelen, länkarna, krysset är osynliga = när menyn är stängd*/
         opacity: 0;
-
     }
 
-    .main-nav.is-open{
+    .main-nav.is-open{                                      /*ÖPPEN = gråa hinnan/hazen fadar in först - bli allt "genom skinligt innan det går över till menyn"*/
         visibility: visible;
-        opacity: 1;
+        background-color: rgba(230, 234, 235, 0.5);
+        
+        transition: background-color 0.2s ease;
     }
+
+    .main-nav.is-open::before, .main-nav.is-open ul, .main-nav.is-open .menu-close{         /*sen så "fadar" panelen, länkarna och kryset in*/
+        opacity: 1;
+        transition: opacity 0.2s ease 0.15s;
+    }
+
 
     .main-nav ul{                       /*SKRIVER ÖVER desktopens radlayout*/
         flex-direction: column;
@@ -445,8 +471,8 @@ main{
         position: absolute;
         padding: 0;
         width: 40px;
-        top: 1rem;
-        right: 1.5rem;
+        top: 2rem;            /*TOP + RIGHT = vart KRYSSET ÄR*/
+        right: 2rem;          /*TOP + RIGHT = vart KRYSSET SITTER*/
 
     }
 
@@ -455,7 +481,6 @@ main{
         width: 100%;
         height: auto;
     }
-
 
     .menu-toggle{
         display: block;
@@ -472,7 +497,6 @@ main{
         width: 100%;
         height: auto;
     }
-
 
     /*MAIN PIC : knapparna under bilden*/
     .main-pic{
@@ -492,9 +516,6 @@ main{
         min-width: 0;                       /* GÖR SÅ rums kortens knapp är som desktops*/
     }
 
-
-
-   
     .main-pic-buttons{
         inset:100% 0 auto 0;        /*börjar där bilden slutar*/
         transform: none;
@@ -613,10 +634,6 @@ main{
     .site-footer h3{
         font-size: 1rem;                /*fixar storlkene på titlarna i footer*/
     }
-
-
-
-
 
 
 }
