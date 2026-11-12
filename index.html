@@ -7,6 +7,7 @@
     <meta name="description" content="Play online or on-site escape rooms with a hacker theme. Book a challenge for you and your friends or your team at work.">
     <link rel="icon" href="logo.svg" type="image/svg+xml">                          <!--lilla loggan i webläsarfliken. -->
     <link rel='stylesheet' href='main.css'>
+    <link rel="stylesheet" href="modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -219,6 +220,17 @@
     </div>
    </footer>
 
+    <!--Modal börjar här!-->
+
+    <!--Min modal är satt till display none i main branchen.
+    Den ska uppdateras till en active class när man klickar på boka knappen.-->
+    <div class="check-availability-modal">
+        <h3>Book room "Title of room" (step1)</h3>
+        <p>What date would you like to come?</p>
+        <p>Date</p>
+        <input type="date" placeholder="none">
+        <button>Search available times</button>
+    </div>
 
 <script src="script.js"></script>
 </body>
