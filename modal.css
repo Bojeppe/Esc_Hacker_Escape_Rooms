@@ -1,0 +1,51 @@
+body {
+  position: relative;
+}
+
+.check-availability-modal {
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(209, 209, 209);
+  padding: 20px;
+  width: 500px;
+  z-index: 20;
+
+  opacity: 0;
+}
+
+.check-availability-modal h3 {
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.check-availability-modal p {
+  margin-bottom: 14px;
+  font-size: 12px;
+}
+
+.check-availability-modal p:last-of-type {
+  margin-bottom: 2px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.check-availability-modal input {
+  margin-bottom: 240px;
+  padding: 4px;
+}
+
+.check-availability-modal button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 12px;
+  background-color: rgb(132, 68, 252);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
