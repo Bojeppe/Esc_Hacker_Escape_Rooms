@@ -231,7 +231,30 @@
         <input type="date" placeholder="none">
         <button>Search available times</button>
     </div>
+<div id="bookingStep2">
+  <h3>Booking details</h3>
 
+  <form id="bookingForm">
+    <label for="bookingName">Name</label>
+    <input type="text" id="bookingName" required>
+
+    <label for="bookingEmail">Email</label>
+    <input type="email" id="bookingEmail" required>
+
+    <label for="bookingTime">Time</label>
+    <input type="time" id="bookingTime" required>
+
+    <label for="bookingPlayers">Number of players</label>
+    <input type="number" id="bookingPlayers" min="1" required>
+
+    <button type="submit">Book now</button>
+  </form>
+</div>
+
+<div id="bookingStep3">
+  <h3>Booking confirmed!</h3>
+  <p>Thank you for your booking!</p>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

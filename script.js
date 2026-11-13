@@ -24,3 +24,12 @@ closeBtn.addEventListener(
     "click",
     closeMenu
 );
+
+const bookingForm = document.getElementById("bookingForm");
+
+bookingForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  document.getElementById("bookingStep2").style.display = "none";
+  document.getElementById("bookingStep3").style.display = "block";
+});
