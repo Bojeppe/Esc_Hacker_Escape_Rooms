@@ -2,7 +2,7 @@ body {
   position: relative;
 }
 
-.check-availability-modal {
+#check-availability-modal {
   background-color: white;
   position: fixed;
   top: 50%;
@@ -12,32 +12,31 @@ body {
   padding: 20px;
   width: 500px;
   z-index: 20;
-
-  opacity: 0;
 }
 
-.check-availability-modal h3 {
+#check-availability-modal h3 {
   font-weight: normal;
   margin-bottom: 20px;
 }
 
-.check-availability-modal p {
+#check-availability-modal p {
   margin-bottom: 14px;
   font-size: 12px;
 }
 
-.check-availability-modal p:last-of-type {
+#check-availability-modal label {
   margin-bottom: 2px;
   font-size: 10px;
   font-weight: bold;
 }
 
-.check-availability-modal input {
+#check-availability-modal input {
   margin-bottom: 240px;
   padding: 4px;
+  display: block;
 }
 
-.check-availability-modal button {
+#check-availability-modal button {
   position: absolute;
   right: 10px;
   bottom: 10px;

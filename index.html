@@ -224,12 +224,12 @@
 
     <!--Min modal är satt till display none i main branchen.
     Den ska uppdateras till en active class när man klickar på boka knappen.-->
-    <div class="check-availability-modal">
-        <h3>Book room "Title of room" (step1)</h3>
+    <div id="check-availability-modal">
+        <h3 id="book-room-header">Book room "Title of room" (step1)</h3>
         <p>What date would you like to come?</p>
-        <p>Date</p>
-        <input type="date" placeholder="none">
-        <button>Search available times</button>
+        <label>Date</label>
+        <input id="booking-date" type="date">
+        <button id="search-times">Search available times</button>
     </div>
 
 <script src="script.js"></script>
