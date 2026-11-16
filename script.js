@@ -25,11 +25,11 @@ closeBtn.addEventListener(
     closeMenu
 );
 
-const bookingForm = document.getElementById("bookingForm");
+const bookingForm = document.querySelector(".booking-form");
 
 bookingForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  document.getElementById("bookingStep2").style.display = "none";
-  document.getElementById("bookingStep3").style.display = "block";
+  document.querySelector(".booking-step-2").style.display = "none";
+  document.querySelector(".booking-step-3").style.display = "block";
 });

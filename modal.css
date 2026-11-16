@@ -50,19 +50,19 @@ body {
   border-radius: 4px;
 }
 
-#bookingStep2 {
+.booking-step-2 {
+  display: block;
+  background-color: white;
+  padding: 20px;
+}
+
+.booking-step-3 {
   display: none;
   background-color: white;
   padding: 20px;
 }
 
-#bookingStep3 {
-  display: none;
-  background-color: white;
-  padding: 20px;
-}
-
-#bookingForm input {
+.booking-form input {
   display: block;
   margin-bottom: 10px;
 }
