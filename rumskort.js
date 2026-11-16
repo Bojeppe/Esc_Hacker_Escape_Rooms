@@ -1,4 +1,4 @@
-// testdata tills API:t är klart
+// testdata tills API är klar
 const testRum = [
   {
     title: "Test room 1",
@@ -6,8 +6,8 @@ const testRum = [
     type: "online",
     minParticipants: 2,
     maxParticipants: 6,
-    rating: 4.5,
-    image: "https://picsum.photos/300/200",
+    rating: 4,
+    image: "images/hackerman-mobil.png",
     labels: ["tech", "beginner"]
   },
   {
@@ -16,8 +16,8 @@ const testRum = [
     type: "on-site",
     minParticipants: 3,
     maxParticipants: 8,
-    rating: 3.8,
-    image: "https://picsum.photos/300/201",
+    rating: 3,
+    image: "images/hackerman-mobil.png",
     labels: ["web", "hard"]
   },
   {
@@ -26,8 +26,8 @@ const testRum = [
     type: "online",
     minParticipants: 1,
     maxParticipants: 4,
-    rating: 4.9,
-    image: "https://picsum.photos/300/202",
+    rating: 5,
+    image: "images/hackerman-mobil.png",
     labels: ["tech", "hard"]
   },
   {
@@ -36,37 +36,71 @@ const testRum = [
     type: "on-site",
     minParticipants: 2,
     maxParticipants: 5,
-    rating: 2.5,
-    image: "https://picsum.photos/300/203",
+    rating: 2,
+    image: "images/hackerman-mobil.png",
     labels: ["web"]
   }
 ];
 
+// bygger stjärnorna, fulla först och sedan tomma
+function skapaStjarnor(rating) {
+  const stjarnor = document.createElement("span");
+  stjarnor.classList.add("stars");
+  stjarnor.setAttribute("aria-label", "Rating: " + rating + " out of 5");
+
+  for (let i = 1; i <= 5; i++) {
+    const stjarna = document.createElement("img");
+    stjarna.alt = "";
+    if (i <= Math.round(rating)) {
+      stjarna.src = "images/full-star.svg";
+    } else {
+      stjarna.src = "images/empty-star.svg";
+    }
+    stjarnor.appendChild(stjarna);
+  }
+  return stjarnor;
+}
+
+// bygger ett kort med samma struktur som i index.html
 function skapaRumskort(rum) {
   const kort = document.createElement("article");
   kort.classList.add("room-card");
 
   const bild = document.createElement("img");
+  bild.classList.add("room-image");
   bild.src = rum.image;
   bild.alt = rum.title;
 
+  const info = document.createElement("div");
+  info.classList.add("room-info");
+
   const titel = document.createElement("h3");
-  titel.textContent = rum.title;
+  titel.classList.add("room-title");
+  titel.textContent = rum.title + " (" + rum.type + ")";
 
-  const beskrivning = document.createElement("p");
-  beskrivning.textContent = rum.description;
+  const meta = document.createElement("div");
+  meta.classList.add("room-meta");
 
-  const info = document.createElement("p");
-  info.textContent = rum.type + ", " + rum.minParticipants + " till " + rum.maxParticipants + " deltagare, rating " + rum.rating;
+  const deltagare = document.createElement("span");
+  deltagare.textContent = rum.minParticipants + "-" + rum.maxParticipants + " participants";
 
-  const knapp = document.createElement("button");
-  knapp.classList.add("book-button");
-  knapp.textContent = "Book room";
+  meta.append(skapaStjarnor(rum.rating), deltagare);
 
-  kort.append(bild, titel, beskrivning, info, knapp);
+  const text = document.createElement("p");
+  text.classList.add("room-text");
+  text.textContent = rum.description;
+
+  const knapp = document.createElement("a");
+  knapp.href = "#";
+  knapp.classList.add("btn", "btn-primary", "btn-small");
+  knapp.textContent = "Book this room";
+
+  info.append(titel, meta, text, knapp);
+  kort.append(bild, info);
   return kort;
 }
 
+// visar alla rum i listan i en container
 function visaRum(lista, container) {
   container.innerHTML = "";
   lista.forEach(function (rum) {
@@ -74,6 +108,7 @@ function visaRum(lista, container) {
   });
 }
 
+// visar de tre med högst rating
 function visaTopp3(lista, container) {
   const sorterad = [...lista].sort((a, b) => b.rating - a.rating);
   visaRum(sorterad.slice(0, 3), container);

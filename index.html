@@ -80,71 +80,7 @@
         <section class="popular">
             <h2>Popular challenges right now</h2>
 
-            <!--KORT 1-->
-            <div class="room-cards">
-                <article class="room-card">
-                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
-                    <div class="room-info">
-                        <h3 class="room-title">Title of room (on-site)</h3>
-                        <div class="room-meta">
-
-                            <span class="stars" aria-label="Rating: 4 out of 5">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/empty-star.svg" alt="">
-                            </span>
-
-                            <span>2-6 participants</span>
-
-                        </div>
-                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
-                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
-                    </div>
-                </article>
-
-                <!--KORT 2-->
-                <article class="room-card">
-                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
-                    <div class="room-info">
-                        <h3 class="room-title">Title of room (on-site)</h3>
-                        <div class="room-meta">
-                            <span class="stars" aria-label="Rating: 4 out of 5">        <!--aria-label är till för att skärmläsaren ska säga Rating: 4 out of 5 -->
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/empty-star.svg" alt="">
-                            </span>       
-                            <span>2-6 participants</span>
-
-                        </div>
-                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
-                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
-                    </div>
-                </article>
-
-                <!--KORT 3-->
-                <article class="room-card">
-                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
-                    <div class="room-info">
-                        <h3 class="room-title">Title of room (on-site)</h3>
-                        <div class="room-meta">
-                            <span class="stars" aria-label="Rating: 4 out of 5">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/full-star.svg" alt="">
-                                <img src="images/empty-star.svg" alt="">
-                            </span>
-                            <span>2-6 participants</span>
-
-                        </div>
-                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
-                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
-                    </div>
-                </article>
+            <div class="room-cards" id="top-rooms">
 
             </div>
 
@@ -237,7 +173,7 @@
 
 <script src="script.js"></script>
 
-<section id="top-rooms"></section>
+
 <script src="rumskort.js"></script>
 <script>
   visaTopp3(testRum, document.querySelector("#top-rooms"));
