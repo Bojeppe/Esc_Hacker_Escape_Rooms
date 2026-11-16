@@ -31,7 +31,7 @@ const searchButton = document.querySelector("#search-times");
 
 let selectedDate = "";
 let availableTimes = [];
-let challengeId = 3; // temporärt
+let challengeId = 3; // temporärt vet ej men som har hand om challenge ID
 searchButton.addEventListener("click", async () => {
     selectedDate = inputDate.value;
 
