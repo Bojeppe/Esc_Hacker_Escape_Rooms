@@ -416,7 +416,7 @@ main{
         inset: 0;                       /*hela skärmen*/
         z-index: 1000;                  /*OVANPÅ ALLT annat*/
 
-        background: rgba(230, 234, 335, 0) ;         /*ljusgrå genomsnylig som i figma - blir menyn*/
+        background: rgba(230, 234, 235, 0) ;         /*ljusgrå genomsnylig som i figma - blir menyn*/
 
         visibility: hidden;             /*gömd som standar - så den inte syns hela tin*/
         
