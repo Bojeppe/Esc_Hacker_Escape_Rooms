@@ -24,3 +24,12 @@ closeBtn.addEventListener(
     "click",
     closeMenu
 );
+
+const bookingForm = document.querySelector(".booking-form");
+
+bookingForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  document.querySelector(".booking-step-2").style.display = "none";
+  document.querySelector(".booking-step-3").style.display = "block";
+});
