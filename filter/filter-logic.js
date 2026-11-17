@@ -23,3 +23,15 @@ onlineCheckbox.addEventListener('click', () => {
 offlineCheckbox.addEventListener('click', () => { 
   offlineLabel.classList.toggle('active', offlineCheckbox.checked);
 });
+
+//Klickar för att ändra antalet stjärnor i ratingen. 
+document.querySelectorAll('.star-rating').forEach(star => {
+  star.addEventListener('click', () => {
+    const img = star.querySelector('img');
+    const isFull = img.classList.contains('full-star');
+
+    img.src = isFull ? 'empty-star.svg' : 'full-star.svg';
+    img.classList.toggle('full-star', !isFull);
+    img.classList.toggle('empty-star', isFull);
+  });
+});
