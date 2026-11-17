@@ -60,8 +60,3 @@ body {
   border: none;
   border-radius: 4px;
 }
-
-#check-availability-modal button:hover,
-#check-availability-modal input:hover {
-  cursor: pointer;
-}
