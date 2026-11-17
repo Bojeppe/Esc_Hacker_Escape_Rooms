@@ -44,7 +44,8 @@ searchButton.addEventListener("click", async () => {
         challengeId
     );
     console.log(availableTimes);
-    document.querySelector("#check-availability-modal").style.opacity = 0;
+    document.querySelector("#check-availability-modal").style.display = none;
+    document.querySelector(".booking-step-2").style.display = "block";
 });
 
 async function getAvailableTimes(date, challengeId) {
