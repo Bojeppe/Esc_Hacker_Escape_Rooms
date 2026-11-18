@@ -14,24 +14,30 @@ const offlineCheckbox = document.getElementById('offlineCheckbox');
 const onlineLabel = document.querySelector('.online');
 const offlineLabel = document.querySelector('.offline');
 
-//Togglar status på checklist rutan för online-challenges till "active" när man klickar på den.
+//Togglar status på checklist rutan hos online-challenges till "active" när man klickar på den.
 onlineCheckbox.addEventListener('click', () => { 
   onlineLabel.classList.toggle('active', onlineCheckbox.checked);
 });
 
-//Togglar status på checklist rutan för offline-challenges till "active" när man klickar på den.
+//Togglar status på checklist rutan hos offline-challenges till "active" när man klickar på den.
 offlineCheckbox.addEventListener('click', () => { 
   offlineLabel.classList.toggle('active', offlineCheckbox.checked);
 });
 
-//Klickar för att ändra antalet stjärnor i ratingen. 
-document.querySelectorAll('.star-rating').forEach(star => {
-  star.addEventListener('click', () => {
-    const img = star.querySelector('img');
-    const isFull = img.classList.contains('full-star');
+//Klickar för att ändra antalet stjärnor i rating-filtreringen. 
+document.querySelectorAll('.starRatingFrom, .starRatingTo').forEach(group => {
+const starRating = group.querySelectorAll('.star-rating');
 
-    img.src = isFull ? 'empty-star.svg' : 'full-star.svg';
-    img.classList.toggle('full-star', !isFull);
-    img.classList.toggle('empty-star', isFull);
+  starRating.forEach((star, index) => {
+    star.addEventListener('click', () => {
+      starRating.forEach((pic, starIndex) => {
+        const img = pic.querySelector('img');
+        const isFull = starIndex <= index; // Fyll alla till och med den klickade
+
+        img.src = isFull ? 'full-star.svg' : 'empty-star.svg';
+        img.classList.toggle('full-star', isFull);
+        img.classList.toggle('empty-star', !isFull);
+      });
+    });
   });
 });
