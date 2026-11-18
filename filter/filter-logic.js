@@ -1,5 +1,7 @@
-//Namn och variabler kan ändras när jag fått tillgång till HTML sidan. 
+//Namn och variabler kommer ändras när jag fått tillgång till rumskorten och filterrutan  
 
+
+//TAGS-KNAPPARNA OCH CHECKBOX
 const tagsToggle = document.querySelectorAll('.tags'); 
 
 //Togglar status på taggarna till "active" när man klickar på dem.
@@ -24,6 +26,7 @@ offlineCheckbox.addEventListener('click', () => {
   offlineLabel.classList.toggle('active', offlineCheckbox.checked);
 });
 
+//STAR-RATING
 //Klickar för att ändra antalet stjärnor i rating-filtreringen. 
 document.querySelectorAll('.starRatingFrom, .starRatingTo').forEach(group => {
 const starRating = group.querySelectorAll('.star-rating');
@@ -41,3 +44,44 @@ const starRating = group.querySelectorAll('.star-rating');
     });
   });
 });
+
+
+//SÖKRUTAN
+//Lyssnare som uppdaterar sökningen medan användaren skriver
+const search = document.querySelector(".textInput");
+
+let debounceTimer;
+const debounce = (callback, time) => {
+  window.clearTimeout(debounceTimer);
+  debounceTimer = window.setTimeout(callback, time); 
+};
+search.addEventListener(
+  "input",
+  (event) => {
+    const query = event.target.value;
+    debounce(() => handleSearchPosts(query), 500); //Debouce ger användaren 500ms att skriva innan sidan uppdateras
+  },
+  false
+);
+
+//Gör om all text till små bokstäver, tar bort bindesstreck, mellanslag och kollar att längden är minst 1 bokstav. 
+const handleSearchPosts = (query) => {
+  const searchQuery = query.trim().toLowerCase().replace('-', '');
+
+// Tom sökning eller för kort sökning = visa alla kort igen
+  if (searchQuery.length <= 1) {
+    show(challenges);
+    return;
+  }
+
+//Hämtar data från type, title, description och labels
+  const searchResults = challenges.filter(
+    (challenge) =>
+      challenge.type.toLowerCase().includes(searchQuery) ||
+      challenge.title.toLowerCase().includes(searchQuery) ||
+      challenge.description.toLowerCase().includes(searchQuery) ||
+      challenge.labels.some((label) => label.toLowerCase().includes(searchQuery))
+  );
+
+  show(searchResults);
+};
