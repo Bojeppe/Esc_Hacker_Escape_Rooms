@@ -1,49 +1,7 @@
-// testdata tills API är klar
-const testRum = [
-  {
-    title: "Test room 1",
-    description: "Beskrivning av rum 1",
-    type: "online",
-    minParticipants: 2,
-    maxParticipants: 6,
-    rating: 4,
-    image: "images/hackerman-mobil.png",
-    labels: ["tech", "beginner"]
-  },
-  {
-    title: "Test room 2",
-    description: "Beskrivning av rum 2",
-    type: "on-site",
-    minParticipants: 3,
-    maxParticipants: 8,
-    rating: 3,
-    image: "images/hackerman-mobil.png",
-    labels: ["web", "hard"]
-  },
-  {
-    title: "Test room 3",
-    description: "Beskrivning av rum 3",
-    type: "online",
-    minParticipants: 1,
-    maxParticipants: 4,
-    rating: 5,
-    image: "images/hackerman-mobil.png",
-    labels: ["tech", "hard"]
-  },
-  {
-    title: "Test room 4",
-    description: "Beskrivning av rum 4",
-    type: "on-site",
-    minParticipants: 2,
-    maxParticipants: 5,
-    rating: 2,
-    image: "images/hackerman-mobil.png",
-    labels: ["web"]
-  }
-];
+import { getChallenges } from "./api.js";
 
-// bygger stjärnorna, fulla först och sedan tomma
-function skapaStjarnor(rating) {
+// gör stjärnorna, fulla först och sedan tomma
+export function skapaStjarnor(rating) {
   const stjarnor = document.createElement("span");
   stjarnor.classList.add("stars");
   stjarnor.setAttribute("aria-label", "Rating: " + rating + " out of 5");
@@ -62,7 +20,7 @@ function skapaStjarnor(rating) {
 }
 
 // bygger ett kort med samma struktur som i index.html
-function skapaRumskort(rum) {
+export function skapaRumskort(rum) {
   const kort = document.createElement("article");
   kort.classList.add("room-card");
 
@@ -74,9 +32,11 @@ function skapaRumskort(rum) {
   const info = document.createElement("div");
   info.classList.add("room-info");
 
+  const typ = rum.type === "onsite" ? "on-site" : rum.type;
+
   const titel = document.createElement("h3");
   titel.classList.add("room-title");
-  titel.textContent = rum.title + " (" + rum.type + ")";
+  titel.textContent = rum.title + " (" + typ + ")";
 
   const meta = document.createElement("div");
   meta.classList.add("room-meta");
@@ -93,6 +53,7 @@ function skapaRumskort(rum) {
   const knapp = document.createElement("a");
   knapp.href = "#";
   knapp.classList.add("btn", "btn-primary", "btn-small");
+  knapp.dataset.challengeId = rum.id;
   knapp.textContent = "Book this room";
 
   info.append(titel, meta, text, knapp);
@@ -101,7 +62,7 @@ function skapaRumskort(rum) {
 }
 
 // visar alla rum i listan i en container
-function visaRum(lista, container) {
+export function visaRum(lista, container) {
   container.innerHTML = "";
   lista.forEach(function (rum) {
     container.appendChild(skapaRumskort(rum));
@@ -109,7 +70,23 @@ function visaRum(lista, container) {
 }
 
 // visar de tre med högst rating
-function visaTopp3(lista, container) {
+export function visaTopp3(lista, container) {
   const sorterad = [...lista].sort((a, b) => b.rating - a.rating);
   visaRum(sorterad.slice(0, 3), container);
 }
+
+// hämtar datan och visar topp 3 om sidan har #top-rooms
+async function laddaTopp3() {
+  const container = document.querySelector("#top-rooms");
+  if (!container) {
+    return;
+  }
+  try {
+    const rum = await getChallenges();
+    visaTopp3(rum, container);
+  } catch (error) {
+    container.textContent = error.message;
+  }
+}
+
+laddaTopp3();
