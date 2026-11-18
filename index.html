@@ -12,9 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-
-
-
 <body>
 
     <!---HEADER--->
@@ -80,7 +77,71 @@
         <section class="popular">
             <h2>Popular challenges right now</h2>
 
-            <div class="room-cards" id="top-rooms">
+            <!--KORT 1-->
+            <div class="room-cards">
+                <article class="room-card">
+                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
+                    <div class="room-info">
+                        <h3 class="room-title">Title of room (on-site)</h3>
+                        <div class="room-meta">
+
+                            <span class="stars" aria-label="Rating: 4 out of 5">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/empty-star.svg" alt="">
+                            </span>
+
+                            <span>2-6 participants</span>
+
+                        </div>
+                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
+                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
+                    </div>
+                </article>
+
+                <!--KORT 2-->
+                <article class="room-card">
+                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
+                    <div class="room-info">
+                        <h3 class="room-title">Title of room (on-site)</h3>
+                        <div class="room-meta">
+                            <span class="stars" aria-label="Rating: 4 out of 5">        <!--aria-label är till för att skärmläsaren ska säga Rating: 4 out of 5 -->
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/empty-star.svg" alt="">
+                            </span>       
+                            <span>2-6 participants</span>
+
+                        </div>
+                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
+                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
+                    </div>
+                </article>
+
+                <!--KORT 3-->
+                <article class="room-card">
+                    <img class="room-image" src="images/hackerman-mobil.png" alt="Hooded hacker on a computer">
+                    <div class="room-info">
+                        <h3 class="room-title">Title of room (on-site)</h3>
+                        <div class="room-meta">
+                            <span class="stars" aria-label="Rating: 4 out of 5">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/full-star.svg" alt="">
+                                <img src="images/empty-star.svg" alt="">
+                            </span>
+                            <span>2-6 participants</span>
+
+                        </div>
+                        <p class="room-text">Praetera, ex culpa non invenies unum aut non accustatis unum. Et nihil inuitam. Nemo nocere tibi erit, et non inimicos, et</p>
+                        <a href="#" class="btn btn-primary btn-small">Book this room</a>
+                    </div>
+                </article>
 
             </div>
 
@@ -163,21 +224,42 @@
 
     <!--Min modal är satt till display none i main branchen.
     Den ska uppdateras till en active class när man klickar på boka knappen.-->
-    <div class="check-availability-modal">
-        <h3>Book room "Title of room" (step1)</h3>
+<div id="modal-background">
+    <div id="check-availability-modal">
+        <h3 id="book-room-header">Book room "Title of room" (step1)</h3>
         <p>What date would you like to come?</p>
-        <p>Date</p>
-        <input type="date" placeholder="none">
-        <button>Search available times</button>
+        <label>Date</label>
+        <input id="booking-date" type="date">
+        <button id="search-times">Search available times</button>
+
     </div>
+<div class="booking-step-2">
+<h3>Booking details</h3>
 
-<script src="script.js"></script>
+  <form class="booking-form">
+    <label for="bookingName">Name</label>
+    <input type="text" id="bookingName" required>
 
+    <label for="bookingEmail">Email</label>
+    <input type="email" id="bookingEmail" required>
 
-<script src="rumskort.js"></script>
-<script>
-  visaTopp3(testRum, document.querySelector("#top-rooms"));
-</script>
+    <label for="bookingTime">Time</label>
+    <input type="time" id="bookingTime" required>
 
+    <label for="bookingPlayers">Number of players</label>
+    <input type="number" id="bookingPlayers" min="1" required>
+
+    <button type="submit">Book now</button>
+  </form>
+</div>
+
+<div class="booking-step-3">
+  <h3>Booking confirmed!</h3>
+  <p>Thank you for your booking!</p>
+</div>
+</div>
+<script type="module" src="/js/script.js"></script>
+<script type="module" src="/js/api.js"></script>
 </body>
+
 </html>
