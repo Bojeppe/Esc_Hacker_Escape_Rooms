@@ -2,28 +2,61 @@
 
 
 //TAGS-KNAPPARNA OCH CHECKBOX
-const tagsToggle = document.querySelectorAll('.tags'); 
-
-//Togglar status på taggarna till "active" när man klickar på dem.
-tagsToggle.forEach(tagsToggle => {  
-  tagsToggle.addEventListener('click', () => {
-    tagsToggle.classList.toggle('active');
-    });
-});
-
+const tagsToggle = document.querySelectorAll('.tags'); //
 const onlineCheckbox = document.getElementById('onlineCheckbox');
 const offlineCheckbox = document.getElementById('offlineCheckbox');
 const onlineLabel = document.querySelector('.online');
 const offlineLabel = document.querySelector('.offline');
 
+//Skapar en array med innehållet från alla knappar som är aktiva.
+function challengeFilters() { 
+  const activeTags = [...document.querySelectorAll('.tags.active')] 
+    .map((tags) => tags.textContent.trim().toLowerCase()); //Gör om all text till små bokstäver, tar bort mellanslag.  
+
+    const showOnline = onlineCheckbox.checked;
+    const showOffline = offlineCheckbox.checked;
+
+    //Går igenom challenges och skapar en ny lista med de som är isChecked eller isTagged som visas i det slutliga resultatet.
+    const result = challenges.filter((challenge) => {
+    const type = challenge.type.toLowerCase();
+
+    //Kontroll av checkboxarna
+    const isChecked =
+      (!showOnline && !showOffline) || //Sant om ingen av checkboxarna är ikryssad.
+      (showOnline && type.includes('online')) || //Sant om online-checkboxen är ikryssad och typen är online.
+      (showOffline && type.includes('onsite'));//Sant om offline-checkboxen är ikryssad och typen är offline.
+
+    //Kontroll av taggarna
+    const isTagged =
+      activeTags.length === 0 || //Om ingen tagg är aktiva, visa alla utmaningar.
+      challenge.labels.some((label) =>
+        activeTags.some((search) => label.toLowerCase().includes(search))//Sant om en eller flera av taggarna är aktiva. 
+      );
+  
+    return isChecked && isTagged;
+  });
+
+  show(result);
+}
+
+//Togglar status på taggarna till "active" när man klickar på dem.
+tagsToggle.forEach((tag) => {
+  tag.addEventListener('click', () => {
+    tag.classList.toggle('active');
+    challengeFilters();
+  });
+});
+
 //Togglar status på checklist rutan hos online-challenges till "active" när man klickar på den.
-onlineCheckbox.addEventListener('click', () => { 
+onlineCheckbox.addEventListener('click', () => {
   onlineLabel.classList.toggle('active', onlineCheckbox.checked);
+  challengeFilters();
 });
 
 //Togglar status på checklist rutan hos offline-challenges till "active" när man klickar på den.
-offlineCheckbox.addEventListener('click', () => { 
+offlineCheckbox.addEventListener('click', () => {
   offlineLabel.classList.toggle('active', offlineCheckbox.checked);
+  challengeFilters();
 });
 
 //STAR-RATING
