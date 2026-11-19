@@ -90,3 +90,17 @@ async function laddaTopp3() {
 }
 
 laddaTopp3();
+// ritar alla rum på challenge-sidan
+async function laddaAllaRum() {
+    const container = document.querySelector("#all-rooms");
+    if (!container) return;
+
+    try {
+        const rum = await getChallenges();
+        visaRum(rum, container);
+    } catch (error) {
+        container.textContent = error.message;
+    }
+}
+
+laddaAllaRum();
