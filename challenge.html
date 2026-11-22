@@ -41,6 +41,46 @@
     </header>
 
     <!-- HÄR KAN NI BÖRJA LÄGGA IN ER HTML MARWA OCH ABDEL :) -->
+    <main> 
+        <h2>Our Challenges</h2>
+       <!-- FILTER DELEN DÄR KNAPPAR ÖPNAS OCH STÄNGS -->
+       <button id="filter-toggle" aria-expanded="false"> Filter challenges</button>
+       
+       <!-- FILTER SECTION -->
+         <section id="filter-panel" class="hidden">
+                <h3>Filter challenges</h3>
+
+                <!-- Online ans on-site -->
+                <h4>By type</h4>
+                <label><input type="checkbox" id="type-1" unchecked> Include online challenges</label>
+                <label><input type="checkbox" id="type-2" unchecked> Include on-site challenges</label>
+
+                <!-- Minimum and maximum rating -->
+                <h4>By rating</h4>
+                <div id="rating-filter">
+                  <span class="mini-rating" aria-label="Rating: 2 out of 5">
+                     <img src="images/full-star.svg" alt="">
+                     <img src="images/full-star.svg" alt="">
+                     <img src="images/empty-star.svg" alt="">
+                     <img src="images/empty-star.svg" alt="">
+                     <img src="images/empty-star.svg" alt="">
+                 </span>
+                 <p>to</p>
+                  <span class="max-rating" aria-label="Rating: 5 out of 5">
+                     <img src="images/full-star.svg" alt="">
+                     <img src="images/full-star.svg" alt="">
+                     <img src="images/full-star.svg" alt="">
+                     <img src="images/full-star.svg" alt="">
+                     <img src="images/full-star.svg" alt="">
+                 </span>
+           
+                </div>
+                <!-- SÖKNING FILTER -->
+                <h4>Or type to search for keyword</h4>
+                <input type="text" id="challenge-search" placeholder="Start typing to filter">
+
+            </section>
+    </main>
 
     <footer class="site-footer">
     <!---SITE-FOOTER--->
