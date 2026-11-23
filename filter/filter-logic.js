@@ -1,120 +1,152 @@
-//Namn och variabler kommer ändras när jag fått tillgång till rumskorten och filterrutan  
+import { getChallenges } from "./api.js";
+import { createRoomCard, showRooms } from "./roomCards.js";
 
+////Ritar upp Abdels RUMSKORT
+const challenges = await getChallenges();
+const container = document.querySelector("#roomCards");
+showRooms(challenges, container);
 
-//TAGS-KNAPPARNA OCH CHECKBOX
-const tagsToggle = document.querySelectorAll('.tags'); //
+const tagsToggle = document.querySelectorAll('.tags'); 
 const onlineCheckbox = document.getElementById('onlineCheckbox');
 const offlineCheckbox = document.getElementById('offlineCheckbox');
 const onlineLabel = document.querySelector('.online');
 const offlineLabel = document.querySelector('.offline');
 
-//Skapar en array med innehållet från alla knappar som är aktiva.
-function challengeFilters() { 
-  const activeTags = [...document.querySelectorAll('.tags.active')] 
-    .map((tags) => tags.textContent.trim().toLowerCase()); //Gör om all text till små bokstäver, tar bort mellanslag.  
-
-    const showOnline = onlineCheckbox.checked;
-    const showOffline = offlineCheckbox.checked;
-
-    //Går igenom challenges och skapar en ny lista med de som är isChecked eller isTagged som visas i det slutliga resultatet.
-    const result = challenges.filter((challenge) => {
-    const type = challenge.type.toLowerCase();
-
-    //Kontroll av checkboxarna
-    const isChecked =
-      (!showOnline && !showOffline) || //Sant om ingen av checkboxarna är ikryssad.
-      (showOnline && type.includes('online')) || //Sant om online-checkboxen är ikryssad och typen är online.
-      (showOffline && type.includes('onsite'));//Sant om offline-checkboxen är ikryssad och typen är offline.
-
-    //Kontroll av taggarna
-    const isTagged =
-      activeTags.length === 0 || //Om ingen tagg är aktiva, visa alla utmaningar.
-      challenge.labels.some((label) =>
-        activeTags.some((search) => label.toLowerCase().includes(search))//Sant om en eller flera av taggarna är aktiva. 
-      );
-  
-    return isChecked && isTagged;
-  });
-
-  show(result);
-}
-
-//Togglar status på taggarna till "active" när man klickar på dem.
+//Togglar status på TAGGARNA till "active" när man klickar på dem.
 tagsToggle.forEach((tag) => {
   tag.addEventListener('click', () => {
     tag.classList.toggle('active');
     challengeFilters();
   });
-});
+}); 
 
-//Togglar status på checklist rutan hos online-challenges till "active" när man klickar på den.
+//Togglar status på CHECKLIST rutan hos online/offline-challenges till "active" när man klickar på den.
 onlineCheckbox.addEventListener('click', () => {
   onlineLabel.classList.toggle('active', onlineCheckbox.checked);
   challengeFilters();
 });
 
-//Togglar status på checklist rutan hos offline-challenges till "active" när man klickar på den.
 offlineCheckbox.addEventListener('click', () => {
   offlineLabel.classList.toggle('active', offlineCheckbox.checked);
   challengeFilters();
 });
 
-//STAR-RATING
-//Klickar för att ändra antalet stjärnor i rating-filtreringen. 
-document.querySelectorAll('.starRatingFrom, .starRatingTo').forEach(group => {
-const starRating = group.querySelectorAll('.star-rating');
+//Klickar för att ändra antalet stjärnor i STAR-RATING filtreringen. 
+function fillStars(group, value) {
+  group.querySelectorAll('.star-rating').forEach((pic, index) => {
+    const img = pic.querySelector('img');
+    const isFull = index < value;
+    img.src = isFull ? 'images/full-star.svg' : 'images/empty-star.svg';
+    img.classList.toggle('full-star', isFull);
+    img.classList.toggle('empty-star', !isFull);
+  });
+}
 
-  starRating.forEach((star, index) => {
+const ratingFrom = document.querySelector('.starRatingFrom');
+const ratingTo = document.querySelector('.starRatingTo');
+
+//Kör de två olika STAR-RATING grupperna i varsin array.
+[ratingFrom, ratingTo].forEach((group) => {  
+  const rating = group === ratingFrom; //Gruppen jämförs med "från" ratingen.
+
+//Stjärnorna markeras fram till det index man klickat på. 
+  group.querySelectorAll('.star-rating').forEach((star, index) => { 
     star.addEventListener('click', () => {
-      starRating.forEach((pic, starIndex) => {
-        const img = pic.querySelector('img');
-        const isFull = starIndex <= index; // Fyll alla till och med den klickade
+      const value = index + 1;
 
-        img.src = isFull ? 'full-star.svg' : 'empty-star.svg';
-        img.classList.toggle('full-star', isFull);
-        img.classList.toggle('empty-star', !isFull);
-      });
+//Värdet av antal stjärnor jämförs mellan de två grupperna "från" och "till". 
+      if (rating) {
+        minRating = value;
+        if (maxRating < value) maxRating = value; //Om max är mindre än min, ändras min-värdet till samma som max.
+      } else {
+        maxRating = value;
+        if (minRating > value) minRating = value; //Om min är större än max, ändras max-värdet till samma som min.
+      }
+
+//STAR-RATING fylls i efter antal markerade stjärnor i förhållande till max och min.
+      fillStars(ratingFrom, minRating);
+      fillStars(ratingTo, maxRating);
+      challengeFilters();
     });
   });
 });
 
-
-//SÖKRUTAN
-//Lyssnare som uppdaterar sökningen medan användaren skriver
+//Lyssnare som uppdaterar SÖKRUTAN medan användaren skriver input.
 const search = document.querySelector(".textInput");
 
+//Debouce ger användaren 500ms att skriva innan sidan uppdateras.
 let debounceTimer;
 const debounce = (callback, time) => {
-  window.clearTimeout(debounceTimer);
+  window.clearTimeout(debounceTimer); 
   debounceTimer = window.setTimeout(callback, time); 
 };
 search.addEventListener(
   "input",
   (event) => {
     const query = event.target.value;
-    debounce(() => handleSearchPosts(query), 500); //Debouce ger användaren 500ms att skriva innan sidan uppdateras
+    debounce(() => handleSearchPosts(query), 500); 
   },
   false
 );
 
-//Gör om all text till små bokstäver, tar bort bindesstreck, mellanslag och kollar att längden är minst 1 bokstav. 
+//Gör om all text användaren skriver i SÖKRUTAN till små bokstäver, tar bort bindesstreck, mellanslag och kollar att längden är minst 1 bokstav. 
 const handleSearchPosts = (query) => {
-  const searchQuery = query.trim().toLowerCase().replace('-', '');
-
-// Tom sökning eller för kort sökning = visa alla kort igen
-  if (searchQuery.length <= 1) {
-    show(challenges);
-    return;
-  }
-
-//Hämtar data från type, title, description och labels
-  const searchResults = challenges.filter(
-    (challenge) =>
-      challenge.type.toLowerCase().includes(searchQuery) ||
-      challenge.title.toLowerCase().includes(searchQuery) ||
-      challenge.description.toLowerCase().includes(searchQuery) ||
-      challenge.labels.some((label) => label.toLowerCase().includes(searchQuery))
-  );
-
-  show(searchResults);
+  searchQuery = query.trim().toLowerCase().replace('-', '');
+  challengeFilters();
 };
+
+//Samlar allt i FILTER FUNKTIONEN som kan KALLAS för varje moment. 
+let minRating = 1;
+let maxRating = 5;
+let searchQuery = "";  
+
+function challengeFilters() {
+
+//Visar endast resultatet av det som filtrerats.
+  const result = challenges.filter((challenge) => {
+
+//Skapar en array med innehållet från alla knappar som är aktiva.
+  const activeTags = [...document.querySelectorAll('.tags.active')]
+    .map((tag) => tag.textContent.trim().toLowerCase()); //Gör om all text till små bokstäver, tar bort mellanslag.  
+
+//Variabel när checkboxarna är ibockade.
+  const showOnline = onlineCheckbox.checked;
+  const showOffline = offlineCheckbox.checked;
+
+  const typeFilter =
+    (!showOnline && !showOffline) || //SANT om ingen av checkboxarna är ikryssad.
+    (showOnline && challenge.type('online')) || //SANT om endast online-checkboxen är ikryssad och typen är online.
+    (showOffline && challenge.type('onsite')); //SANT om endast offline-checkboxen är ikryssad och typen är offline.
+
+//Kontroll av TAGGARNA.
+  const tagsFilter =
+    activeTags.length === 0 ||
+    challenge.labels.some((label) =>
+      activeTags.some((search) => label.toLowerCase().includes(search))
+    );
+
+//Kontroll av STAR-RATING.
+  const rating = Math.round(Number(challenge.rating) || 0); //Gör om till heltal. Saknas det betyg försvinner inte alla korten ur listan. 
+  const ratingFilter = (minRating === 1 && maxRating === 5) || (rating >= minRating && rating <= maxRating); //Startvärdet är 1 och 5. Ratingen måste ligga inom intervallet.
+    
+//Kontroll av SÖKRUTAN, söker mot type, title, description och labels.
+  const searchFilter =
+    searchQuery.length <= 1 || //Längd måste vara minst 1 bokstav.
+    challenge.type.toLowerCase().includes(searchQuery) || 
+    challenge.title.toLowerCase().includes(searchQuery) || 
+    challenge.description.toLowerCase().includes(searchQuery) ||
+    challenge.labels.some((label) => label.toLowerCase().includes(searchQuery));
+
+    return typeFilter && tagsFilter && ratingFilter && searchFilter;
+  });
+
+//Om det inte finns något resultat, skapas ett felmeddelande.
+if (result.length === 0) {
+  const message = document.createElement('p');
+  message.className = 'no-match';
+  message.textContent = 'No matching challenges';
+  container.replaceChildren(message);
+} else {
+  showRooms(result, container);
+}
+}
