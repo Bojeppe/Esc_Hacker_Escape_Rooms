@@ -42,7 +42,10 @@ searchButton.addEventListener("click", async () => {
         return;
     }
     try {
-        availableTimes = await getAvailableTimes(challengeId, selectedDate);
+        availableTimes = await getAvailableTimes(
+            challengeId,
+            selectedDate
+        );
         document.querySelector("#check-availability-modal").style.display = "none";
         document.querySelector(".booking-step-2").style.display = "block";
     } catch (error) {
