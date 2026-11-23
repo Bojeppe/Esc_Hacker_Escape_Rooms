@@ -33,7 +33,17 @@ const searchButton = document.querySelector("#search-times");
 
 let selectedDate = "";
 let availableTimes = [];
-let challengeId = 3; // temporärt vet ej vem som har hand om challenge ID
+let challengeId = "";
+
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("btn")) {
+        challengeId = event.target.dataset.challengeId;
+
+        document.querySelector("#check-availability-modal").style.display = "block";
+        document.querySelector("#modal-background").style.display = "block";
+    }
+});
+
 searchButton.addEventListener("click", async () => {
     selectedDate = inputDate.value;
 
