@@ -1,10 +1,9 @@
 import { getChallenges } from "./api.js";
-import { createRoomCard, showRooms } from "./roomCards.js";
+import { createRoomCard, showRooms } from "./rumskort.js";
 
 ////Ritar upp Abdels RUMSKORT
 const challenges = await getChallenges();
-const container = document.querySelector("#roomCards");
-showRooms(challenges, container);
+const container = document.querySelector("#all-rooms");
 
 const tagsToggle = document.querySelectorAll('.tags'); 
 const onlineCheckbox = document.getElementById('onlineCheckbox');
@@ -113,10 +112,11 @@ function challengeFilters() {
   const showOnline = onlineCheckbox.checked;
   const showOffline = offlineCheckbox.checked;
 
+
   const typeFilter =
-    (!showOnline && !showOffline) || //SANT om ingen av checkboxarna är ikryssad.
-    (showOnline && challenge.type('online')) || //SANT om endast online-checkboxen är ikryssad och typen är online.
-    (showOffline && challenge.type('onsite')); //SANT om endast offline-checkboxen är ikryssad och typen är offline.
+  (!showOnline && !showOffline) || //SANT om ingen av checkboxarna är ikryssad.
+  (showOnline && challenge.type === 'online') || //SANT om endast online-checkboxen är ikryssad och typen är online.
+  (showOffline && challenge.type === 'onsite'); //SANT om endast offline-checkboxen är ikryssad och typen är offline.
 
 //Kontroll av TAGGARNA.
   const tagsFilter =
