@@ -1,1 +1,40 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+#filter-toggle {
+    background-color: #e22323;
+    color:#f9f9f9;
+    border: 1px solid #ccc;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+#filter-panel {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 600px;
+}
+
+#filter-panel [hidden] {
+    display: none;
+}
+
+#h2 {
+    align-items: center;
+}
+
+#filter-panel h3 {
+    margin:25px auto;
+    display:flex;
+    
+}
+
+
+
+
