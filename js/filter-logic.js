@@ -1,5 +1,6 @@
 
-//Separerar alla queryselectors för att koden ska kunna testas.  
+//Separerar filter-funktionerna för att koden ska kunna testas utan DOM element och queryselectors.  
+
 export function filterChallenges(
   challenges,
   { activeTags, showOnline, showOffline, minRating, maxRating, searchQuery }

@@ -102,7 +102,7 @@ const handleSearchPosts = (query) => {
 };
 
 
-//Kallar på funktionerna i filen "filter-function"
+//Kallar på funktionerna i filen "filter-logic"
 function challengeFilters() {
   const result = filterChallenges(challenges, {
   activeTags: getActiveTags(document),
