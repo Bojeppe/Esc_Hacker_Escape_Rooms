@@ -36,11 +36,14 @@ let availableTimes = [];
 let challengeId = "";
 
 document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("btn")) {
+    if (event.target.classList.contains("btn-small")) {
         challengeId = event.target.dataset.challengeId;
-
         document.querySelector("#check-availability-modal").style.display = "block";
         document.querySelector("#modal-background").style.display = "block";
+
+        const roomTitle = event.target.dataset.challengeTitle;
+        document.querySelector("#book-room-header").textContent = roomTitle;
+        console.log(document.querySelector("#book-room-header").textContent);
     }
 });
 

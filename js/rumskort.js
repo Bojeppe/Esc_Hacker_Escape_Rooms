@@ -55,6 +55,7 @@ export function createRoomCard(room) {
   button.href = "#";
   button.classList.add("btn", "btn-primary", "btn-small");
   button.dataset.challengeId = room.id;
+  button.dataset.challengeTitle = room.title;
   button.textContent = "Book this room";
 
   info.append(title, meta, text, button);
