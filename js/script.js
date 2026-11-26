@@ -47,6 +47,7 @@ document.addEventListener("click", (event) => {
     }
 });
 
+
 searchButton.addEventListener("click", async () => {
     selectedDate = inputDate.value;
 
