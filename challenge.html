@@ -8,6 +8,7 @@
     <link rel="icon" href="logo.svg" type="image/svg+xml">                          <!--lilla loggan i webläsarfliken. -->
     <link rel='stylesheet' href='main.css'>
     <link rel="stylesheet" href="modal.css">
+    <link rel='stylesheet' href='filter.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -40,7 +41,6 @@
         
     </header>
 
-    <!-- HÄR KAN NI BÖRJA LÄGGA IN ER HTML MARWA OCH ABDEL :) -->
     <main> 
         <h2>Our Challenges</h2>
        <!-- FILTER DELEN DÄR KNAPPAR ÖPNAS OCH STÄNGS -->
@@ -50,39 +50,52 @@
          <section id="filter-panel" class="hidden">
                 <h3>Filter challenges</h3>
 
+                <h4>By tags</h4>
+                <button class="tags">Web</button>
+                <button class="tags">Linux</button>
+                <button class="tags">Coding</button>
+                <button class="tags">Hacking</button>
+                <button class="tags">Cryptography</button>
+                <button class="tags">Javascript</button>            
+
                 <!-- Online ans on-site -->
                 <h4>By type</h4>
-                <label><input type="checkbox" id="type-1" unchecked> Include online challenges</label>
-                <label><input type="checkbox" id="type-2" unchecked> Include on-site challenges</label>
+                <label><input type="checkbox" id="onlineCheckbox" unchecked class="online"> Include online challenges</label>
+                <label><input type="checkbox" id="offlineCheckbox" unchecked class="offline"> Include on-site challenges</label>
 
                 <!-- Minimum and maximum rating -->
                 <h4>By rating</h4>
+
                 <div id="rating-filter">
-                  <span class="mini-rating" aria-label="Rating: 2 out of 5">
-                     <img src="images/full-star.svg" alt="">
-                     <img src="images/full-star.svg" alt="">
-                     <img src="images/empty-star.svg" alt="">
-                     <img src="images/empty-star.svg" alt="">
-                     <img src="images/empty-star.svg" alt="">
+                  <span class="min-rating" aria-label="Rating: 2 out of 5">
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
                  </span>
                  <p>to</p>
                   <span class="max-rating" aria-label="Rating: 5 out of 5">
-                     <img src="images/full-star.svg" alt="">
-                     <img src="images/full-star.svg" alt="">
-                     <img src="images/full-star.svg" alt="">
-                     <img src="images/full-star.svg" alt="">
-                     <img src="images/full-star.svg" alt="">
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
                  </span>
            
                 </div>
                 <!-- SÖKNING FILTER -->
                 <h4>Or type to search for keyword</h4>
-                <input type="text" id="challenge-search" placeholder="Start typing to filter">
+                <input type="text" id="challenge-search" class="textInput" list="search-suggestions" placeholder="Start typing to filter">
+
+                <datalist id="search-suggestions">
+                <option value="Electronics">
+                <option value="Phreaking">
+                <option value="Bash">
+                </datalist>
 
             </section>
-    </main>
 
-    <main>
     <section class="challenges">
         <h2>All challenges</h2>
         <div class="room-cards" id="all-rooms"></div>
@@ -163,6 +176,8 @@
 <script type="module" src="js/script.js"></script>
 <script type="module" src="js/api.js"></script>
 <script type="module" src="js/rumskort.js"></script>
+<script type="module" src="js/filter-logic.js"></script>
+<script type="module" src="js/filter-events.js"></script>
 </body>
 
 </html>   
