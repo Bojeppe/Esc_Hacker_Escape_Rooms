@@ -62,7 +62,7 @@ body {
 }
 
 .booking-step-2 {
-  display: none;
+  display: block;
   background-color: white;
   padding: 20px;
 }
