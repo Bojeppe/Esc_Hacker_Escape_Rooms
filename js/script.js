@@ -41,7 +41,6 @@ document.addEventListener("click", (event) => {
         document.querySelector("#check-availability-modal").style.display = "block";
         document.querySelector("#modal-background").style.display = "block";
 
-
         const roomTitle = event.target.dataset.challengeTitle;
         document.querySelector("#book-room-header").textContent = roomTitle;
         console.log(document.querySelector("#book-room-header").textContent);
