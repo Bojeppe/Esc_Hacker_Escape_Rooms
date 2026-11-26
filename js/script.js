@@ -69,8 +69,10 @@ searchButton.addEventListener("click", async () => {
 
 document.querySelector("#modal-background").addEventListener("click", (event) => {
     if (event.target === event.currentTarget) {
-        document.querySelector("#modal-background").style.display = "none"
+        document.querySelector("#modal-background").style.display = "none";
         document.querySelector("#check-availability-modal").style.display = "none";
+        document.querySelector(".booking-step-2").style.display = "none";
+        document.querySelector(".booking-step-3").style.display = "none";
     }
 });
 
