@@ -124,6 +124,9 @@ function challengeFilters() {
   }
 }
 
+//Lägger till filter om användaren trycker på "online/offline challenges" på hemsidan. 
+applyCheckboxFormat();
+
 //MARWAS öppna & stäng funktion för filter rutan
 console.log("filter-logic.js is running");
 const filterToggle = document.querySelector('#filter-toggle');  // hittar kanpparna i html //
@@ -138,3 +141,4 @@ filterToggle.addEventListener('click', function() {  // när man klickar på kna
     filterToggle.setAttribute('aria-expanded', String(!filterPanel.hidden));  // ändrar statusen på knappen //
     console.log("Panel hidden:", filterPanel.hidden);
 });
+
