@@ -25,11 +25,9 @@ return challenges.filter((challenge) => {
     
 //Kontroll av SÖKRUTAN, söker mot type, title, description och labels.
   const searchFilter =
-    searchQuery.length <= 1 || //Längd måste vara minst 1 bokstav.
-    challenge.type.toLowerCase().includes(searchQuery) || 
+    searchQuery.length <= 1 || //Längd måste vara minst 1 bokstav. 
     challenge.title.toLowerCase().includes(searchQuery) || 
-    challenge.description.toLowerCase().includes(searchQuery) ||
-    challenge.labels.some((label) => label.toLowerCase().includes(searchQuery));
+    challenge.description.toLowerCase().includes(searchQuery);
 
     return typeFilter && tagsFilter && ratingFilter && searchFilter;
   });
