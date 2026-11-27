@@ -85,3 +85,21 @@ bookingForm.addEventListener("submit", function (event) {
     document.querySelector(".booking-step-2").style.display = "none";
     document.querySelector(".booking-step-3").style.display = "block";
 });
+
+//Filtrering vid klick av sidans knappar "online-challenges" "offline challenges"
+function applyCheckboxFormat() {
+  const onlineCheckbox = document.getElementById("onlineCheckbox");
+  const offlineCheckbox = document.getElementById("offlineCheckbox");
+  const format = new URLSearchParams(location.search).get("format");
+
+  // Ingen parameter = båda ibockade
+  onlineCheckbox.checked = format ? format === "online" : true;
+  offlineCheckbox.checked = format ? format === "offline" : true;
+
+  // Synka utseendet
+  onlineLabel.classList.toggle("active", onlineCheckbox.checked);
+  offlineLabel.classList.toggle("active", offlineCheckbox.checked);
+  challengeFilters();
+}
+
+applyCheckboxFormat()

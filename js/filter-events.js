@@ -123,3 +123,6 @@ function challengeFilters() {
     showRooms(result, container);
   }
 }
+
+//Lägger till filter om användaren trycker på "online/offline challenges" på hemsidan. 
+applyCheckboxFormat();
