@@ -1,5 +1,133 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 .tags.active {
-    color: red;
+    color: rgb(255, 255, 255);
+    background-color: grey;
 }
+
+
+/* Style för rubrik och filterknapp */
+.challenge-Header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+    margin:25px auto;
+    font-size: 20px;
+}
+
+.challenge-Header h2 {
+    align-items: center;
+}
+
+/* Style för filter toggle knapp */
+#filter-toggle {
+    background-color: #e22323;
+    color:#f9f9f9;
+    border: 1px solid #ccc;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Style för filter panel */
+#filter-panel {
+    margin-bottom: 30px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#filter-panel[hidden] {
+    display: none;
+}
+
+#filter-panel h3 {
+    margin:25px auto;
+    display:flex;
+
+}
+
+#filter-panel h4 {
+    margin:25px auto;
+    display:flex;
+
+}
+
+/* Style för the filter panel grid */
+.filter-panel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+    column-gap: 10px;
+}
+
+/* by type filter */
+.by-type{
+    grid-column: 1;
+    grid-row: 1;
+}
+.by-type label {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* by rating filter */
+.by-rating{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.min-rating .max-rating {
+    display: flex;
+}
+
+.star-rating {
+    border: none;
+    background: transparent;
+    flex-direction: row;
+}
+#filter-panel .star-rating img {
+    width: 15px;
+    height: 15px;
+    
+}
+
+
+/* by search filter */
+.by-search {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+
+
+/* by tags filter */
+.by-tags {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+
+.by-tags button{
+    background-color: #fcf9f9; 
+    border-radius: 20px;  /* Rundar till hönen på knapparna */
+    padding: 8px;  /* Justerar padding för att göra knapparna mindre */
+    margin: 5px;  /* Lägger till lite mellanrum mellan knappar */
+    color: #949292; 
+} 
+
+
+
