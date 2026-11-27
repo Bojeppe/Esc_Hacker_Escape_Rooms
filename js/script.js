@@ -33,7 +33,21 @@ const searchButton = document.querySelector("#search-times");
 
 let selectedDate = "";
 let availableTimes = [];
-let challengeId = 3; // temporärt vet ej vem som har hand om challenge ID
+let challengeId = "";
+
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("btn-small")) {
+        challengeId = event.target.dataset.challengeId;
+        document.querySelector("#check-availability-modal").style.display = "block";
+        document.querySelector("#modal-background").style.display = "block";
+
+        const roomTitle = event.target.dataset.challengeTitle;
+        document.querySelector("#book-room-header").textContent = `Book room "${roomTitle}" (step 1)`;
+        console.log(document.querySelector("#book-room-header").textContent);
+    }
+});
+
+
 searchButton.addEventListener("click", async () => {
     selectedDate = inputDate.value;
 
@@ -53,6 +67,15 @@ searchButton.addEventListener("click", async () => {
     }
 });
 
+document.querySelector("#modal-background").addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) {
+        document.querySelector("#modal-background").style.display = "none";
+        document.querySelector("#check-availability-modal").style.display = "none";
+        document.querySelector(".booking-step-2").style.display = "none";
+        document.querySelector(".booking-step-3").style.display = "none";
+    }
+});
+
 // Josefs JS
 const bookingForm = document.querySelector(".booking-form");
 
@@ -62,3 +85,21 @@ bookingForm.addEventListener("submit", function (event) {
     document.querySelector(".booking-step-2").style.display = "none";
     document.querySelector(".booking-step-3").style.display = "block";
 });
+
+//Filtrering vid klick av sidans knappar "online-challenges" "offline challenges"
+function applyCheckboxFormat() {
+  const onlineCheckbox = document.getElementById("onlineCheckbox");
+  const offlineCheckbox = document.getElementById("offlineCheckbox");
+  const format = new URLSearchParams(location.search).get("format");
+
+  // Ingen parameter = båda ibockade
+  onlineCheckbox.checked = format ? format === "online" : true;
+  offlineCheckbox.checked = format ? format === "offline" : true;
+
+  // Synka utseendet
+  onlineLabel.classList.toggle("active", onlineCheckbox.checked);
+  offlineLabel.classList.toggle("active", offlineCheckbox.checked);
+  challengeFilters();
+}
+
+applyCheckboxFormat()
