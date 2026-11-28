@@ -124,5 +124,18 @@ function challengeFilters() {
   }
 }
 
-//Lägger till filter om användaren trycker på "online/offline challenges" på hemsidan. 
+//Filtrering vid klick av sidans knappar "online-challenges" "offline challenges"
+function applyCheckboxFormat() {
+  const format = new URLSearchParams(location.search).get("format");
+
+  // Ingen parameter = båda ibockade
+  onlineCheckbox.checked = format ? format === "online" : true;
+  offlineCheckbox.checked = format ? format === "offline" : true;
+
+  // Synka utseendet
+  onlineLabel.classList.toggle("active", onlineCheckbox.checked);
+  offlineLabel.classList.toggle("active", offlineCheckbox.checked);
+  challengeFilters();
+}
+
 applyCheckboxFormat();
