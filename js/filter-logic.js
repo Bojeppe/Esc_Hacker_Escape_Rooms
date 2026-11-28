@@ -39,31 +39,3 @@ export function getActiveTags() {
     tag.textContent.trim().toLowerCase()
   );
 }
-
-
-
-
-const filterToggle = document.querySelector('#filter-toggle');  // hittar kanpparna i html //
-const filterPanel = document.querySelector('#filter-panel');   // hittar filter section i html //
-const filterClose = document.querySelector("#filter-close"); 
-
-// öppnar filterpanelen//
-if (filterToggle && filterPanel && filterClose) {   
- filterToggle.addEventListener("click", function() {  // när man klickar på knappen //
-    filterPanel.hidden = false;
-    filterToggle.hidden = true;
-    filterToggle.setAttribute("aria-expanded", "true");  
-    filterClose.focus();
- });
-
- // stänger filterpanelen//
- filterClose.addEventListener("click", function() {
-    filterPanel.hidden = true;
-    filterToggle.hidden = false;
-    filterToggle.setAttribute("aria-expanded", "false");  
-    filterClose.focus();
-  });
-}
-
-
-

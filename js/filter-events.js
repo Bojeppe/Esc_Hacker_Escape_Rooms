@@ -118,12 +118,6 @@ function challengeFilters() {
     const message = document.createElement("p");
     message.className = "no-match";
     message.textContent = "No matching challenges";
-    message.style.fontSize = "30px";
-    message.style.textAlign ="center";
-    message.style.margin ="40px auto";
-    message.style.color ="#302f2f";
-    message.style.marginTop ="90px";
-
     container.replaceChildren(message);
   } else {
     showRooms(result, container);
