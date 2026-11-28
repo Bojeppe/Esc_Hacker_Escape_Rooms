@@ -58,7 +58,7 @@ export async function getChallenges() {
 
 // Hjälp funktion som ser till att DATUM är RÄTT och inte gör så att 9999-99-99 är ett accepterbart datum - Löser inget... bara jag som vill att det ska vara ordentligt och rätt...
 function isValidDate(text){
-    // är den rätt form YYYY-MM-DD ? - KOLLAR DET
+    // är den rätt form YYYY-MM-DD ? - KOLLAR DET - Regex
     if(!/^\d{4}-\d{2}-\d{2}$/.test(text)){
         return false;
     }

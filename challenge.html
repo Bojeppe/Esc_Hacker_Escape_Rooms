@@ -28,8 +28,8 @@
             </button>
             
             <ul>
-                <li><a href="#online">Play online</a></li>
-                <li><a href="#onsite">Play on-site</a></li>
+                <li><a href="challenge.html?format=online">Play online</a></li>
+                <li><a href="challenge.html?format=offline">Play on-site</a></li>
                 <li><a href="#story">The story</a></li>
                 <li><a href="#contact">Contact us</a></li>
             </ul>
@@ -41,78 +41,97 @@
    </header>
 
     <main> 
-        <div class="challenge-Header">
-         <h2>Our Challenges</h2>
-         <!-- FILTER DELEN DÄR KNAPPAR ÖPNAS OCH STÄNGS -->
-         <button id="filter-toggle" aria-expanded="false"> Filter challenges</button>
-      </div>
+        <div class="challenge-heading">
+        <h2>Our Challenges</h2>
+       <!-- FILTER DELEN DÄR KNAPPAR ÖPNAS OCH STÄNGS -->
+       <button id="filter-toggle" aria-expanded="false" aria-controls="filter-panel">Filter challenges</button>
+        </div>
+
+       <!-- FILTER SECTION -->
+       <section id="filter-panel" hidden>
         
-        <!-- FILTER SECTION -->
-         <section id="filter-panel" hidden>
-                <button id="filter-close" aria-label="Close filters">&times</button>
                 <h3>Filter challenges</h3>
+                <div class="filter-panel-grid">
 
+<main>
+    <div class="challenge-heading">
+        <h2>Our Challenges</h2>
+        <!-- FILTER DELEN DÄR KNAPPAR ÖPNAS OCH STÄNGS -->
+        <button id="filter-toggle" aria-expanded="false" aria-controls="filter-panel">Filter challenges</button>
+    </div>
 
+    <!-- FILTER SECTION -->
+    <section id="filter-panel" hidden>
 
-             <div class="filter-panel-grid">
-                 <div class="by-tags">
-                     <h4>By tags</h4>
-                     <button class="tags">Web</button>
-                     <button class="tags">Linux</button>
-                     <button class="tags">Coding</button>
-                     <button class="tags">Hacking</button>
-                     <button class="tags">Cryptography</button>
-                     <button class="tags">Javascript</button>    
-                 </div> 
-                        
+        <h3>Filter challenges</h3>
+        <div class="filter-panel-grid">
 
-                 <!-- Online ans on-site -->
-                 <div class="by-type">
-                     <h4>By type</h4>
-                     <label><input type="checkbox" id="onlineCheckbox" unchecked class="online"> Include online challenges</label>
-                     <label><input type="checkbox" id="offlineCheckbox" unchecked class="offline"> Include on-site challenges</label>
-                 </div>
+            <div class="tag-filters tag-filters-filter">
+                <h4>By tags</h4>
+                <button class="tags">Web</button>
+                <button class="tags">CTF</button>
+                <button class="tags">SSH</button>
+                <button class="tags">Bash</button>
+                <button class="tags">Linux</button>
+                <button class="tags">Coding</button>
+                <button class="tags">Hacking</button>
+                <button class="tags">Phreaking</button>
+                <button class="tags">Javascript</button>
+                <button class="tags">Electronics</button>
+                <button class="tags">Cryptography</button>
+            </div>
 
-                 <!-- Minimum and maximum rating -->
-                 <div class="by-rating">
-                     <h4>By rating</h4>
+            <div class="by-type by-type-filter">
+                <!-- Online and on-site -->
+                <h4>By type</h4>
+                <label><input type="checkbox" id="onlineCheckbox" unchecked class="online"> Include online challenges</label>
+                <label><input type="checkbox" id="offlineCheckbox" unchecked class="offline"> Include on-site challenges</label>
+            </div>
 
-                     <div id="rating-filter">
-                          <span class="min-rating" aria-label="Rating: 2 out of 5">
-                             <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
-                             <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
-                             <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
-                             <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
-                             <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
-                         </span>
-                         <p>to</p>
-                         <span class="max-rating" aria-label="Rating: 5 out of 5">
-                             <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
-                             <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
-                             <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
-                             <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
-                             <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
-                         </span>
-                     </div>
-                 </div>
-                 
-                 <!-- SÖKNING FILTER -->
-                 <div class="by-search">
-                     <h4>Or type to search for keyword</h4>
-                     <input type="text" id="challenge-search" class="textInput" list="search-suggestions" placeholder="Start typing to filter">
-                     <datalist id="search-suggestions">
-                         <option value="Electronics">
-                         <option value="Phreaking">
-                         <option value="Bash">
-                     </datalist>
-                 </div>
-             </div>
-         </section>
+            <!-- Minimum and maximum rating -->
+            <div id="rating-filter" class="rating-filter">
+                <h4>By rating</h4>
 
-         <section class="challenges">
-             <div class="room-cards" id="all-rooms"></div>
-          </section>
-  </main>
+                <span class="min-rating" aria-label="Rating: 2 out of 5">
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
+                </span>
+                <p>to</p>
+                <span class="max-rating" aria-label="Rating: 5 out of 5">
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                    <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
+                </span>
+            </div>
+
+            <!-- SÖKNING FILTER -->
+            <div class="by-keyword by-keyword-filter">
+                <h4>Or type to search for keyword</h4>
+                <input type="text" id="challenge-search" class="textInput" list="search-suggestions" placeholder="Start typing to filter">
+
+                <datalist id="search-suggestions">
+                    <option value="Game on Windows">
+                    <option value="Project: X 2000">
+                    <option value="Challenge online">
+                    <option value="Electronics">
+                    <option value="Phreaking">
+                    <option value="Bash">
+                </datalist>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="challenges">
+        <h2>All challenges</h2>
+        <div class="room-cards" id="all-rooms"></div>
+    </section>
+</main>
 
     <footer class="site-footer">
     <!---SITE-FOOTER--->
@@ -131,8 +150,8 @@
             </ul>
 
             <ul>
-                <li><a href="#online">Play online</a></li>
-                <li><a href="#onsite">Play on-site</a></li>
+                    <li><a href="challenge.html?format=online">Play online</a></li>
+                    <li><a href="challenge.html?format=offline">Play on-site</a></li>
             </ul>
         </nav>
         
