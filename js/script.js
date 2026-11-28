@@ -42,7 +42,7 @@ document.addEventListener("click", (event) => {
         document.querySelector("#modal-background").style.display = "block";
 
         const roomTitle = event.target.dataset.challengeTitle;
-        document.querySelector("#book-room-header").textContent = roomTitle;
+        document.querySelector("#book-room-header").textContent = `Book room "${roomTitle}" (step 1)`;
         console.log(document.querySelector("#book-room-header").textContent);
     }
 });
@@ -64,6 +64,15 @@ searchButton.addEventListener("click", async () => {
         document.querySelector(".booking-step-2").style.display = "block";
     } catch (error) {
         alert(error.message);
+    }
+});
+
+document.querySelector("#modal-background").addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) {
+        document.querySelector("#modal-background").style.display = "none";
+        document.querySelector("#check-availability-modal").style.display = "none";
+        document.querySelector(".booking-step-2").style.display = "none";
+        document.querySelector(".booking-step-3").style.display = "none";
     }
 });
 

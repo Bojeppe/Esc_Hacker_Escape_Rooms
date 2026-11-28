@@ -42,15 +42,20 @@
     </header>
 
     <main> 
+        <div class="challenge-heading">
         <h2>Our Challenges</h2>
        <!-- FILTER DELEN DÄR KNAPPAR ÖPNAS OCH STÄNGS -->
-       <button id="filter-toggle" aria-expanded="false"> Filter challenges</button>
-       
-       <!-- FILTER SECTION -->
-         <section id="filter-panel" class="hidden">
-                <h3>Filter challenges</h3>
+       <button id="filter-toggle" aria-expanded="false" aria-controls="filter-panel">Filter challenges</button>
+        </div>
 
-                <h4>By tags</h4>
+       <!-- FILTER SECTION -->
+       <section id="filter-panel" hidden>
+        
+                <h3>Filter challenges</h3>
+                <div class="filter-panel-grid">
+
+               <div class="tag-filters tag-filters-filter">
+               <h4>By tags</h4>
                 <button class="tags">Web</button>
                 <button class="tags">CTF</button>                  
                 <button class="tags">SSH</button>  
@@ -61,17 +66,20 @@
                 <button class="tags">Phreaking</button>
                 <button class="tags">Javascript</button>   
                 <button class="tags">Electronics</button>                  
-                <button class="tags">Cryptography</button>         
+                <button class="tags">Cryptography</button>  
+               </div>
 
+                <div class="by-type by-type-filter">
                 <!-- Online ans on-site -->
                 <h4>By type</h4>
                 <label><input type="checkbox" id="onlineCheckbox" unchecked class="online"> Include online challenges</label>
                 <label><input type="checkbox" id="offlineCheckbox" unchecked class="offline"> Include on-site challenges</label>
+                </div>
 
                 <!-- Minimum and maximum rating -->
+                <div id="rating-filter" class="rating-filter">
                 <h4>By rating</h4>
 
-                <div id="rating-filter">
                   <span class="min-rating" aria-label="Rating: 2 out of 5">
                     <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
                     <button class="star-rating"><img class="empty-star" src="images/empty-star.svg" alt=""></button>
@@ -87,9 +95,10 @@
                     <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
                     <button class="star-rating"><img class="full-star" src="images/full-star.svg" alt=""></button>
                  </span>
-           
                 </div>
+
                 <!-- SÖKNING FILTER -->
+                <div class="by-keyword by-keyword-filter">
                 <h4>Or type to search for keyword</h4>
                 <input type="text" id="challenge-search" class="textInput" list="search-suggestions" placeholder="Start typing to filter">
 
@@ -98,7 +107,9 @@
                 <option value="Project: X 2000">
                 <option value="Challenge online">
                 </datalist>
-
+                </div>
+                
+                </div>
             </section>
 
     <section class="challenges">
